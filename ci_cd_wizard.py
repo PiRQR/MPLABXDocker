@@ -65,12 +65,12 @@ ENV PATH /opt/microchip/{language_toolchain}/v{language_toolchain_version}/bin:$
 
 # Download and install Microchip.dsPIC33E-GM-GP-MC-GU-MU_DFP.1.3.85
 RUN curl -fSL -A "Mozilla/4.0" -o /tmp/tmp-pack.atpack \
-         "https://packs.download.microchip.com/Microchip.dsPIC33E-GM-GP-MC-GU-MU_DFP.1.3.85.atpack" \
+         "https://packs.download.microchip.com/Microchip.{pack_name}.{pack_version}.atpack" \
  && mkdir -p /opt/microchip/mplabx/v{mplab_version}/packs/dsPIC33E-GM-GP-MC-GU-MU_DFP/1.3.85 \
  && unzip -o /tmp/tmp-pack.atpack -d /opt/microchip/mplabx/v{mplab_version}/packs/dsPIC33E-GM-GP-MC-GU-MU_DFP/1.3.85 \
  && rm /tmp/tmp-pack.atpack
 ENV BUILD_CONFIGURATION default
 '''
 
-with open('Dockerfile.generated', 'w') as df:
+with open('Dockerfile.gen', 'w') as df:
     df.write(df_text)
